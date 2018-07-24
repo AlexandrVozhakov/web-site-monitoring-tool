@@ -59,7 +59,7 @@ public class UserDaoImpl implements UserDao {
 //                            put.addColumn(
 //                                    Bytes.toBytes("HISTORY"),
 //                                    Bytes.toBytes("url"),
-//                                    Bytes.toBytes(serverRequest.uri()
+//                                    Bytes.toBytes(response.uri()
 //                                            .toString())
 //                            );
                             user.getBehavior().forEach((key, value) -> put.addColumn(

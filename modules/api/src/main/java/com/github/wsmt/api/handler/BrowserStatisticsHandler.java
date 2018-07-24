@@ -1,27 +1,25 @@
 package com.github.wsmt.api.handler;
 
-import com.github.wsmt.api.model.PageStatistics;
-import com.github.wsmt.api.service.PageStatisticsService;
-import org.springframework.http.HttpHeaders;
+import com.github.wsmt.api.model.BrowserStatistics;
+import com.github.wsmt.api.service.BrowserStatisticsService;
 import org.springframework.web.reactive.function.server.HandlerFunction;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
-public class PageStatisticsHandler implements HandlerFunction<ServerResponse> {
-
+public class BrowserStatisticsHandler implements HandlerFunction<ServerResponse> {
     private final Mono<ServerResponse> serverResponse;
 
-    private PageStatisticsHandler(Mono<ServerResponse> serverResponse) {
+    private BrowserStatisticsHandler(Mono<ServerResponse> serverResponse) {
         this.serverResponse = serverResponse;
     }
 
-    public static PageStatisticsHandler byPageService(PageStatisticsService pageStatisticsService) {
-        return new PageStatisticsHandler(
+    public static BrowserStatisticsHandler byBrowserService(BrowserStatisticsService browserStatisticsService) {
+        return new BrowserStatisticsHandler(
                 ServerResponse.ok()
                         .body(
-                                pageStatisticsService.pageStatistics(),
-                                PageStatistics.class
+                                browserStatisticsService.browserStatistics(),
+                                BrowserStatistics.class
                         )
         );
     }

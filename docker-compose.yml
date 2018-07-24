@@ -47,6 +47,7 @@ services:
 #    restart: unless-stopped
     depends_on:
       - hbase
+      - postgres
     volumes:
       - ./modules/reporter/target/reporter.jar:/opt/reporter/reporter.jar
       - ./modules/reporter/application.conf:/opt/reporter/reporter.conf

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>wsmt</title>
+        <link type="text/css" rel="stylesheet" href="webjars/bootstrap/4.1.1/css/bootstrap.min.css">
+        <title>Url</title>
+    </head>
+    <body>
+        <a href="url.html" class="btn btn-dark" role="button" aria-pressed="true">Url</a>
+        <a href="browser.html" class="btn btn-light" role="button" aria-pressed="true">Browser</a>
+        <table class ="table" id ="url">
+            <thead>
+            <tr>
+                <th>URL</th>
+                <th>Count</th>
+            </tr>
+            </thead>
+        </table>
+        <script src="webjars/jquery/3.3.1-1/jquery.min.js"></script>
+        <script src="webjars/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $.getJSON('http://localhost:8082/page', function(data) {
+                console.log(data);
+
+                $.each(data, function(i, item) {
+                    const url = $("<td>");
+                    const count = $("<td>");
+                    url.text(item.url);
+                    count.text(item.count);
+
+                    const tr = $("<tr>");
+                    tr.append(url);
+                    tr.append(count);
+
+                    $("#url").append(tr);
+                });
+            });
+        </script>
+    </body>
+</html>

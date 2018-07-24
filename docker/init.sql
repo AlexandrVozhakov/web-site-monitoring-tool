@@ -10,10 +10,9 @@ CREATE TABLE statistics.web_sites(
 );
 
 CREATE TABLE statistics.browsers(
-  name VARCHAR(12) NOT NULL,
-  web_site_id INT NOT NULL,
-  quantity INT,
-  UNIQUE (name, web_site_id)
+  id SERIAL PRIMARY KEY,
+  browser TEXT NOT NULL,
+  count INT
 );
 
 CREATE TABLE statistics.countries(
